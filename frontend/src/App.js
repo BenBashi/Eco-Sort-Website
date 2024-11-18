@@ -1,7 +1,10 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Header from './components/Header';
+
 const App = () => {
   return (
     <div>
-      <h1>DS Final Project</h1>
+      <Header title="Data Science"/>
     </div>
   );
 }
