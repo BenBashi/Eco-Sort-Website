@@ -17,7 +17,7 @@ The website provides an intuitive interface for users to interact with the Echos
 #### **Usage**
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/Echo-Sort-Website.git
+   git clone https://github.com/BenBashi/Echo-Sort-Website.git
    ```
 2. Navigate to the repository directory.
 3. Follow the setup instructions in the `README` file for installing dependencies and starting the server and client.
