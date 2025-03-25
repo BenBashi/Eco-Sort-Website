@@ -1,12 +1,12 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Header from './components/Header';
+import "bootstrap/dist/css/bootstrap.min.css";
+import Header from "./components/Header";
 
 const App = () => {
   return (
     <div>
-      <Header title="Data Science"/>
+      <Header title="EcoSort" />
     </div>
   );
-}
+};
 
 export default App;
