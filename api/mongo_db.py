@@ -14,10 +14,10 @@ client = MongoClient(DB_URI)
 db = client[DB_NAME]
 samples_collection = db[SAMPLE_COLLECTION]
 
-# Allowed values for certain fields
+# Allowed values for fields
 ALLOWED_SYSTEM_ANALYSIS = {"Paper", "Plastic", "Other", "Failure"}
-ALLOWED_IMAGE_CLASS = {"Paper", "Plastic", "Other"}
-ALLOWED_OUTCOME = {"Success", "Failure", "Null"}
+ALLOWED_IMAGE_CLASS = {"Paper", "Plastic", "Other", None}
+ALLOWED_OUTCOME = {"Success", "Failure", None}
 
 def validate_sample(sample_data, require_all_fields=True):
     """
