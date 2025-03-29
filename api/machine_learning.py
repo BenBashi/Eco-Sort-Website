@@ -121,7 +121,7 @@ def run_test_environment(threshold, pil_img, model_path=model_path_default):
 
     # Determine label
     if is_uncertain:
-        label = "uncertain"
+        label = "Uncertain"
     else:
         label = class_names[predicted_idx]
 

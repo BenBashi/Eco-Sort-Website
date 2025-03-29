@@ -15,7 +15,7 @@ db = client[DB_NAME]
 samples_collection = db[SAMPLE_COLLECTION]
 
 # Allowed values for fields
-ALLOWED_SYSTEM_ANALYSIS = {"Paper", "Plastic", "Other", "Failure"}
+ALLOWED_SYSTEM_ANALYSIS = {"Paper", "Plastic", "Other", "Uncertain"}
 ALLOWED_IMAGE_CLASS = {"Paper", "Plastic", "Other", None}
 ALLOWED_OUTCOME = {"Success", "Failure", None}
 
