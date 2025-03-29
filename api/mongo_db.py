@@ -3,8 +3,8 @@ from bson.objectid import ObjectId
 import os
 from dotenv import load_dotenv
 
+# Load Configuration
 load_dotenv(dotenv_path="./.env.local")
-
 DB_URI = os.environ.get("DB_URI", "")
 DB_NAME = os.environ.get("DB_NAME", "")
 SAMPLE_COLLECTION = os.environ.get("SAMPLE_COLLECTION", "")

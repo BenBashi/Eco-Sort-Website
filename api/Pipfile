@@ -7,6 +7,12 @@ name = "pypi"
 flask = "*"
 pymongo = "*"
 python-dotenv = "*"
+flask-cors = "*"
+opencv-python = "*"
+pillow = "*"
+torch = "*"
+torchvision = "*"
+gdown = "*"
 
 [dev-packages]
 

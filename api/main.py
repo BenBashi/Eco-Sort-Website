@@ -1,4 +1,7 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
+from camera import capture_image_and_load
+from machine_learning import run_test_environment
 from mongo_db import (
     create_sample,
     get_samples,
@@ -9,10 +12,72 @@ from mongo_db import (
 )
 
 app = Flask(__name__)
+CORS(app)
+
+#@app.route('/')
+#def home():
+#    return "Hello from Flask"
 
 @app.route('/')
 def home():
-    return "Hello from Flask"
+    # Directory & filename for the camera capture
+    save_dir = r"C:\Users\user\OneDrive\Gallery\Pictures"
+    filename = "camera_image.jpg"
+    threshold = float(0.7)
+
+    try:
+        # 1) Capture + load as a PIL image
+        saved_path, pil_img = capture_image_and_load(save_dir, filename)
+    except Exception as e:
+        return jsonify({"error": f"Camera capture failed: {e}"}), 500
+
+    try:
+        # 2) Run model inference
+        label, confidence_str = run_test_environment(threshold, pil_img)
+        # 3) Return JSON
+        return jsonify({
+            "message": "Inference complete",
+            "file_path": saved_path,
+            "label": label,
+            "confidence": confidence_str
+        }), 200
+    except Exception as e:
+        return jsonify({"error": f"Model inference failed: {e}"}), 500
+
+#############################
+#      Single Evaluation
+#############################
+@app.route("/evaluate", methods=["GET"])
+def evaluate_route():
+    """
+    1) Capture a photo from the camera -> PIL image
+    2) Run the model inference with 'run_test_environment'
+    3) Return the predicted label & confidence
+    """
+
+    # Directory & filename for the camera capture
+    save_dir = r"C:\Users\user\OneDrive\Gallery\Pictures"
+    filename = "camera_image.jpg"
+    threshold = float(0.7)
+
+    try:
+        # 1) Capture + load as a PIL image
+        saved_path, pil_img = capture_image_and_load(save_dir, filename)
+    except Exception as e:
+        return jsonify({"error": f"Camera capture failed: {e}"}), 500
+
+    try:
+        # 2) Run model inference
+        label, confidence_str = run_test_environment(threshold, pil_img)
+        # 3) Return JSON
+        return jsonify({
+            "message": "Inference complete",
+            "file_path": saved_path,
+            "label": label,
+            "confidence": confidence_str
+        }), 200
+    except Exception as e:
+        return jsonify({"error": f"Model inference failed: {e}"}), 500
 
 
 #############################
