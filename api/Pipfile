@@ -13,6 +13,7 @@ pillow = "*"
 torch = "*"
 torchvision = "*"
 gdown = "*"
+pyserial = "*"
 
 [dev-packages]
 
