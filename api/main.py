@@ -14,35 +14,11 @@ from mongo_db import (
 app = Flask(__name__)
 CORS(app)
 
-#@app.route('/')
-#def home():
-#    return "Hello from Flask"
-
 @app.route('/')
 def home():
-    # Directory & filename for the camera capture
-    save_dir = r"C:\Users\user\OneDrive\Gallery\Pictures"
-    filename = "camera_image.jpg"
-    threshold = float(0.7)
+    return "Hello from Flask"
 
-    try:
-        # 1) Capture + load as a PIL image
-        saved_path, pil_img = capture_image_and_load(save_dir, filename)
-    except Exception as e:
-        return jsonify({"error": f"Camera capture failed: {e}"}), 500
 
-    try:
-        # 2) Run model inference
-        label, confidence_str = run_test_environment(threshold, pil_img)
-        # 3) Return JSON
-        return jsonify({
-            "message": "Inference complete",
-            "file_path": saved_path,
-            "label": label,
-            "confidence": confidence_str
-        }), 200
-    except Exception as e:
-        return jsonify({"error": f"Model inference failed: {e}"}), 500
 
 #############################
 #      Single Evaluation
